@@ -19,7 +19,7 @@ spec:
         workload: app
       containers:
         - name: frontend
-          image: YOUR_REGISTRY/hello-frontend:latest
+          image: http://192.168.40.1:5000/hello-frontend:latest
           ports:
             - containerPort: 80
           resources:

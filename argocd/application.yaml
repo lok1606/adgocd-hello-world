@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/YOUR_ORG/YOUR_REPO.git
+    repoURL: git@github.com:lok1606/adgocd-hello-world.git
     targetRevision: main
     path: k8s
 
