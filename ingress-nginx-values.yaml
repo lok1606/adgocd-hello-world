@@ -1,0 +1,28 @@
+# Install with:
+#   helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+#   helm repo update
+#   helm install ingress-nginx ingress-nginx/ingress-nginx \
+#     --namespace ingress-nginx --create-namespace \
+#     -f ingress-nginx-values.yaml
+#
+# This runs the controller as a DaemonSet directly on the `workder` node
+# (using the same workload=app label), bound to the host network, listening
+# on host port 8080. No NodePort range restrictions apply this way.
+
+controller:
+  kind: DaemonSet
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+
+  nodeSelector:
+    workload: app
+
+  service:
+    enabled: false   # not needed — hostNetwork exposes the controller directly
+
+  containerPort:
+    http: 8080
+    https: 8443
+
+  admissionWebhooks:
+    enabled: false   # simplifies single-node setups; re-enable for production

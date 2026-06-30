@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #0f172a;
+      color: #f8fafc;
+    }
+    .card {
+      background: #1e293b;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    pre {
+      text-align: left;
+      background: #0f172a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      min-height: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello World</h1>
+    <p>Frontend → Backend → PostgreSQL</p>
+    <button onclick="callBackend()">Call Backend</button>
+    <pre id="result">Click the button to call /api/hello</pre>
+  </div>
+
+  <script>
+    async function callBackend() {
+      const el = document.getElementById('result');
+      el.textContent = 'Loading...';
+      try {
+        const res = await fetch('/api/hello');
+        const data = await res.json();
+        el.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        el.textContent = 'Error: ' + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
