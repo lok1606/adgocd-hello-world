@@ -19,7 +19,7 @@ spec:
         workload: app
       containers:
         - name: backend
-          image: 192.168.40.1:5000/hello-backend:latest
+          image: 192.168.40.6:5000/hello-backend:latest
           ports:
             - containerPort: 3000
           envFrom:
