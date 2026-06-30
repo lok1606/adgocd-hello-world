@@ -4,6 +4,7 @@ metadata:
   name: postgres-pvc
   namespace: hello-world
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
