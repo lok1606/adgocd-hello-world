@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: backend-service
   namespace: hello-world
   labels:
-    app: backend
+    app: backend-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: backend-service
   template:
     metadata:
       labels:
-        app: backend
+        app: backend-service
     spec:
       nodeSelector:
         workload: app
@@ -62,7 +62,7 @@ metadata:
   namespace: hello-world
 spec:
   selector:
-    app: backend
+    app: backend-service
   ports:
     - port: 3000
       targetPort: 3000

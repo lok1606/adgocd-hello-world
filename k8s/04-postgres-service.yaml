@@ -5,7 +5,7 @@ metadata:
   namespace: hello-world
 spec:
   selector:
-    app: postgres
+    app: postgres-service
   ports:
     - port: 5432
       targetPort: 5432

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend-service
   namespace: hello-world
   labels:
-    app: frontend
+    app: frontend-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend-service
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend-service
     spec:
       nodeSelector:
         workload: app
@@ -44,7 +44,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: frontend
+    app: frontend-service
   ports:
     - port: 80
       targetPort: 80
